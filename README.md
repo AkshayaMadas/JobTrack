@@ -1,19 +1,18 @@
 # JobTrack
 
-JobTrack is a FastAPI-based job application tracking system that helps candidates manage job opportunities and track their applications through RESTful APIs.
+JobTrack is a FastAPI-based job application tracking system designed to help candidates manage job opportunities and track their application status efficiently.
 
 ## Features
 
-- User registration and login
-- Password hashing and authentication
-- Role-based access control
-- Create and manage job postings
-- View all available jobs
-- View individual job details
-- Apply for jobs with a resume
-- Prevent duplicate applications
-- View the current user's applications
-- Application status tracking
+- User management
+- Job opportunity management
+- Job application tracking
+- Application status management
+- Resume tracking
+- SQLite database integration
+- SQLAlchemy ORM
+- RESTful API development with FastAPI
+- Interactive API documentation with Swagger UI
 
 ## Tech Stack
 
@@ -23,41 +22,28 @@ JobTrack is a FastAPI-based job application tracking system that helps candidate
 - SQLite
 - Pydantic
 - Uvicorn
-- Passlib / Password Hashing
 - Git & GitHub
 
-## API Endpoints
+## Database Models
 
-### Users
-- `POST /users/register` — Register a new user
-- `POST /users/login` — Login user
-
-### Jobs
-- `GET /jobs` — Get all jobs
-- `POST /jobs` — Create a job
-- `GET /jobs/{job_id}` — Get a specific job
-- `PUT /jobs/{job_id}` — Update a job
-- `DELETE /jobs/{job_id}` — Delete a job
-
-### Applications
-- `POST /applications` — Submit a job application
-- `GET /applications` — Get the current user's applications
-
-## Database
-
-The project uses SQLite with SQLAlchemy ORM.
+The application uses SQLite with SQLAlchemy ORM.
 
 Main database models:
 
-- User
-- Job
-- Application
+- **User** – stores candidate information
+- **Job** – stores job opportunity details
+- **Application** – tracks applications submitted by users
 
-## Running the Project
+## Project Structure
 
-1. Clone the repository.
-2. Create and activate a virtual environment.
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
+```text
+JobTrack/
+│
+├── app/
+│   ├── database.py
+│   ├── main.py
+│   └── models.py
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
