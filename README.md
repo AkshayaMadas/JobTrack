@@ -1,40 +1,42 @@
 # JobTrack
 
-A full-stack Job Application Tracking System built with FastAPI, SQLAlchemy, SQLite, HTML, CSS, and JavaScript.
+A full-stack Job Application Tracking System built with **FastAPI, SQLAlchemy, SQLite, HTML, CSS, and JavaScript**.
 
-JobTrack provides separate workflows for candidates and recruiters, including job discovery, applications, job management, applicant tracking, and application status updates.
+JobTrack provides separate workflows for **candidates and recruiters**, allowing candidates to discover and apply for jobs while recruiters can manage job postings and track applications.
 
-## Features
+---
 
-### Candidate Features
+## 🚀 Key Features
+
+### 👩‍💻 Candidate Portal
 
 - User registration and login
 - JWT-based authentication
 - Browse available jobs
 - Search jobs by job title, company, or location
-- View job details
+- View job information
 - Apply for jobs
-- Prevent duplicate applications
+- Duplicate application prevention
 - View submitted applications
 - Track application status
-- View candidate profile
+- Candidate profile
 - Logout
 
-### Recruiter Features
+### 🧑‍💼 Recruiter Portal
 
 - Recruiter authentication
 - Recruiter dashboard
-- Create job postings
-- View and manage posted jobs
-- Edit existing job postings
+- Create and publish job postings
+- View and manage job postings
+- Edit existing jobs
 - Delete job postings
 - View applicants for jobs
 - Update application status
 - Logout
 
-### Application Tracking
+### 📊 Application Tracking
 
-Recruiters can update application statuses such as:
+Recruiters can update application statuses:
 
 - Applied
 - Shortlisted
@@ -42,9 +44,37 @@ Recruiters can update application statuses such as:
 - Selected
 - Rejected
 
-Candidates can see updated application statuses from their dashboard.
+Candidates can view the latest application status from their **My Applications** page.
 
-## Tech Stack
+---
+
+## 🔐 Authentication & Authorization
+
+JobTrack uses **JWT-based authentication** with role-based access control.
+
+### Candidate
+
+Candidates can:
+
+- Browse jobs
+- Apply for jobs
+- View their applications
+- View their profile
+
+### Recruiter
+
+Recruiters can:
+
+- Create jobs
+- Manage jobs
+- View applicants
+- Update application statuses
+
+Protected API endpoints require a valid authentication token.
+
+---
+
+## 🛠️ Tech Stack
 
 ### Backend
 
@@ -62,8 +92,10 @@ Candidates can see updated application statuses from their dashboard.
 - HTML5
 - CSS3
 - JavaScript
+- Fetch API
+- Browser Local Storage
 
-### Testing & Tools
+### Testing & Development
 
 - Pytest
 - HTTPX
@@ -71,7 +103,9 @@ Candidates can see updated application statuses from their dashboard.
 - GitHub
 - VS Code
 
-## Project Structure
+---
+
+## 🏗️ Project Architecture
 
 ```text
 JobTrack/
