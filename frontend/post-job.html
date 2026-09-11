@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack - Post Job</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+        <div>
+            <h1>JobTrack</h1>
+            <p>Recruiter Portal</p>
+        </div>
+
+        <button id="logoutButton">Logout</button>
+    </header>
+
+    <main class="dashboard-container">
+
+        <h2>Post a New Job</h2>
+
+        <div class="form-card">
+
+            <form id="postJobForm">
+
+                <label for="company">Company</label>
+                <input
+                    type="text"
+                    id="company"
+                    placeholder="Enter company name"
+                    required
+                >
+
+                <label for="position">Position</label>
+                <input
+                    type="text"
+                    id="position"
+                    placeholder="Enter job position"
+                    required
+                >
+
+                <label for="location">Location</label>
+                <input
+                    type="text"
+                    id="location"
+                    placeholder="Enter job location"
+                    required
+                >
+
+                <label for="status">Status</label>
+                <select id="status" required>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
+
+                <label for="notes">Job Description / Notes</label>
+                <textarea
+                    id="notes"
+                    placeholder="Enter job details"
+                    rows="5"
+                ></textarea>
+
+                <button type="submit">Post Job</button>
+
+            </form>
+
+            <p id="message"></p>
+
+        </div>
+
+    </main>
+
+    <script src="post-job.js"></script>
+
+</body>
+
+</html>

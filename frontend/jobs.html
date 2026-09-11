@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack - Jobs</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+        <div>
+            <h1>JobTrack</h1>
+            <p>Job Application Tracking System</p>
+        </div>
+
+        <button id="backButton">Dashboard</button>
+    </header>
+
+    <main class="dashboard-container">
+
+        <h2>Available Jobs</h2>
+
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by job, company, or location..."
+>
+
+    <p id="message">Loading jobs...</p>
+
+        <div id="jobsContainer" class="dashboard-cards">
+        </div>
+
+    </main>
+
+    <script src="jobs.js"></script>
+
+</body>
+
+</html>

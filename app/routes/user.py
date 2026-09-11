@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from app.dependencies.auth import require_role
 
 from app.config.database import get_db
 from app.config.security import get_password_hash, verify_password, create_access_token
@@ -81,4 +82,27 @@ def login_user(
     return {
         "access_token": access_token,
         "token_type": "bearer"
+    }
+@router.get("/me")
+def get_my_profile(
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(require_role("candidate"))
+):
+    user = (
+        db.query(models.User)
+        .filter(models.User.id == current_user["user_id"])
+        .first()
+    )
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found"
+        )
+
+    return {
+        "id": user.id,
+        "username": user.username,
+        "email": user.email,
+        "role": user.role
     }

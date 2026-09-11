@@ -77,3 +77,58 @@ def get_my_applications(
     )
 
     return applications
+@router.get("/job/{job_id}")
+def get_job_applicants(
+    job_id: int,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(require_role("recruiter"))
+):
+    job = (
+        db.query(models.Job)
+        .filter(models.Job.id == job_id)
+        .first()
+    )
+
+    if not job:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Job not found"
+        )
+
+    applications = (
+        db.query(models.Application)
+        .filter(
+            models.Application.job_id == job_id
+        )
+        .all()
+    )
+
+    return applications
+@router.put("/{application_id}/status")
+def update_application_status(
+    application_id: int,
+    new_status: str,
+    db: Session = Depends(get_db),
+    current_user: dict = Depends(require_role("recruiter"))
+):
+    application = (
+        db.query(models.Application)
+        .filter(models.Application.id == application_id)
+        .first()
+    )
+
+    if not application:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Application not found"
+        )
+
+    application.status = new_status
+
+    db.commit()
+    db.refresh(application)
+
+    return {
+        "message": "Application status updated successfully",
+        "application": application
+    }
