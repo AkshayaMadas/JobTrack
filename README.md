@@ -1,116 +1,122 @@
 # JobTrack
 
-JobTrack is a FastAPI-based job application tracking system designed to manage job listings and candidate applications through a RESTful API.
+A full-stack Job Application Tracking System built with FastAPI, SQLAlchemy, SQLite, HTML, CSS, and JavaScript.
+
+JobTrack provides separate workflows for candidates and recruiters, including job discovery, applications, job management, applicant tracking, and application status updates.
 
 ## Features
 
+### Candidate Features
+
 - User registration and login
 - JWT-based authentication
-- Candidate and recruiter roles
-- Role-based access control (RBAC)
-- Job creation, retrieval, update and deletion
-- Candidate job applications
-- Duplicate application prevention
-- Resume information storage
-- SQLite database
-- SQLAlchemy ORM
-- Pydantic schemas
-- Swagger / OpenAPI documentation
+- Browse available jobs
+- Search jobs by job title, company, or location
+- View job details
+- Apply for jobs
+- Prevent duplicate applications
+- View submitted applications
+- Track application status
+- View candidate profile
+- Logout
+
+### Recruiter Features
+
+- Recruiter authentication
+- Recruiter dashboard
+- Create job postings
+- View and manage posted jobs
+- Edit existing job postings
+- Delete job postings
+- View applicants for jobs
+- Update application status
+- Logout
+
+### Application Tracking
+
+Recruiters can update application statuses such as:
+
+- Applied
+- Shortlisted
+- Interview
+- Selected
+- Rejected
+
+Candidates can see updated application statuses from their dashboard.
 
 ## Tech Stack
+
+### Backend
 
 - Python
 - FastAPI
 - SQLAlchemy
 - SQLite
 - Pydantic
-- JWT
-- OAuth2
-- Passlib / bcrypt
 - Uvicorn
-- Git & GitHub
+- JWT Authentication
+- Passlib / Password Hashing
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Testing & Tools
+
+- Pytest
+- HTTPX
+- Git
+- GitHub
+- VS Code
 
 ## Project Structure
 
+```text
 JobTrack/
+│
 ├── app/
 │   ├── config/
 │   │   ├── database.py
 │   │   └── security.py
+│   │
 │   ├── dependencies/
 │   │   └── auth.py
+│   │
 │   ├── models/
 │   │   ├── user.py
 │   │   ├── job.py
 │   │   └── application.py
+│   │
 │   ├── routes/
-│   │   ├── user.py
 │   │   ├── jobs.py
+│   │   ├── user.py
 │   │   └── application.py
+│   │
 │   ├── schemas/
 │   │   ├── user.py
 │   │   ├── job.py
 │   │   └── application.py
-│   ├── services/
-│   ├── utils/
+│   │
 │   └── main.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── dashboard.html
+│   ├── jobs.html
+│   ├── applications.html
+│   ├── profile.html
+│   ├── recruiter-dashboard.html
+│   ├── post-job.html
+│   ├── manage-jobs.html
+│   ├── applicants.html
+│   ├── *.js
+│   └── style.css
+│
 ├── tests/
-├── .gitignore
+│   └── test_main.py
+│
 ├── requirements.txt
-└── README.md
-
-## API Endpoints
-
-### Users
-
-- `POST /users/register` — Register a new user
-- `POST /users/login` — Login and receive JWT access token
-
-### Jobs
-
-- `GET /jobs/` — Get available jobs
-- `GET /jobs/{job_id}` — Get a specific job
-- `POST /jobs/` — Create a job (Recruiter)
-- `PUT /jobs/{job_id}` — Update a job
-- `DELETE /jobs/{job_id}` — Delete a job
-
-### Applications
-
-- `POST /applications/` — Apply for a job (Candidate)
-- `GET /applications/` — View candidate applications
-
-## Authentication
-
-JobTrack uses JWT-based authentication with OAuth2 password flow.
-
-Different operations are protected according to the user's role:
-
-- **Candidate** — Can view jobs and submit applications
-- **Recruiter** — Can create and manage job listings
-
-## Running the Project
-
-Install the dependencies:
-
-`pip install -r requirements.txt`
-
-Start the FastAPI server:
-
-`uvicorn app.main:app --reload`
-
-Open the interactive API documentation:
-
-`http://127.0.0.1:8000/docs`
-
-## Project Highlights
-
-JobTrack demonstrates practical backend development concepts including:
-
-- REST API development
-- Authentication and authorization
-- Role-based access control
-- Database design and ORM usage
-- API validation
-- Modular project architecture
-- CRUD operations
-- Git and GitHub workflow
+├── README.md
+└── .gitignore
